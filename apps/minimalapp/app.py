@@ -50,7 +50,7 @@ app.config["SECRET_KEY"] = "DM5Fq1G9XtMzWAeqYWNR"
 # 로그 레벨 설정
 app.logger.setLevel(logging.DEBUG)
 
-# 리다이렉트 중단 하지 않게 설정
+# 리다이렉트 중단 하지 않게 설정 왜냐면 default값이 True이기 때문
 app.config["DEBUG_TB_INTERCEPT_REDIRECTS"] = False
 # dedebugtoolbar 연동 처리
 toolbar = DebugToolbarExtension(app)
@@ -75,9 +75,9 @@ mail = Mail(app)
 
 
 # 맵핑...@app.route()  데코레이터는 반드시 함수를 구현해야함
-@app.route("/", endpoint="root")
-def hello_world():
-    return "<h1>hello, Flask!</h1>"
+# @app.route("/", endpoint="root")
+# def hello_world():
+#     return "<h1>hello, Flask!</h1>"
 
 
 # Template 적용해보기
@@ -99,19 +99,19 @@ def hello(name, out):
 
 
 # app.get(), app.post() 플라스크 2.0 이후에 생긴 데코레이터
-@app.get("/test", endpoint="getTest")
-def testGet():
-    return "<h3>testGet</h3>"
+# @app.get("/test", endpoint="getTest")
+# def testGet():
+#     return "<h3>testGet</h3>"
 
 
-@app.post("/test", endpoint="postTest")
-def testPost():
-    return "<h3>testPost</h3>"
+# @app.post("/test", endpoint="postTest")
+# def testPost():
+#     return "<h3>testPost</h3>"
 
 
-@app.put("/test", endpoint="putTest")
-def testPut():
-    return "<h3>testPut</h3>"
+# @app.put("/test", endpoint="putTest")
+# def testPut():
+#     return "<h3>testPut</h3>"
 
 
 @app.route("/info/<name>/<age>", methods=["GET"], endpoint="info")
@@ -134,7 +134,7 @@ with app.test_request_context():
     # info 정보를 출력해보세요!!!
     print("info", url_for("info", name="testinfo", age=33))
 
-#  여기서 호출하면 오류 생김 - 직접참초하려고 프린트를 쓰면 순환참조가 발생하여 오류가 있으니 하면 안된다.
+#  여기서 호출하면 오류 생김 - 직접참조하려고 프린트를 쓰면 순환참조가 발생하여 오류가 있으니 하면 안된다.
 # print(current_app)
 
 # 애플리케이션 Context를 취득하여 stack 영역에 push

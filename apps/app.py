@@ -74,4 +74,10 @@ def create_app(config_key):
     # register_blueprint()로 blueprint 등록
     app.register_blueprint(auth_views.auth, url_prefix="/auth")
 
+    # 이제부터 작성하는 detector 패키지로부터 views를 import한다
+    from apps.detector import views as dt_views
+    
+    # register_blueprint를 사용해 views의 dt를 앱에 등록한다
+    app.register_blueprint(dt_views.dt)
+
     return app
