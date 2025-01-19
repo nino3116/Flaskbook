@@ -34,11 +34,11 @@ login_manager.login_message = ""
 
 
 # create_app 함수를 작성한다.
-def create_app(config_key):
+def create_app(local):
     # Flask 인스턴스 생성
     app = Flask(__name__)
     # app의 config 설정을 한다
-    app.config.from_object(config[config_key])
+    app.config.from_object(config[local])
     # app.config.from_envvar("APPLICATION_SETTINGS")
     # app.config.from_pyfile("envconfig.py")
     # app.config.from_mapping(
