@@ -25,6 +25,9 @@ class User(db.Model, UserMixin):
     update_at = db.Column(
         db.DateTime, default=datetime.now, onupdate=datetime.now
     )  # onupdate 데이터를 수정할때마다 시간이 업데이트될 수 있게
+    
+    # backref를 이용하여 릴레이션 정보를 설정한다.
+    user_images = db.relationship("UserImage", backref="user", order_by="desc(UserImage.id)")
 
     # 비밀번호를 설정하기 위한 프로퍼티
     @property
