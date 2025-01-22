@@ -8,6 +8,8 @@ baseDir = Path(__file__).parent
 class BaseConfig:
     SECRET_KEY = "DM5Fq1G9XtMzWAeqYWNR"
     WTF_CSRF_SECRET_KEY = "El1oD921KMdGKONsydDa"
+    # 이미지 업로드 경로에 apps/images를 지정한다.
+    UPROAD_FOLDER = str(Path(baseDir, "apps", "images"))
 
 
 # 상황데  따른 환경 설정 작업 (BaseConfig 클래스 각 상황별로 상속하여 처리)

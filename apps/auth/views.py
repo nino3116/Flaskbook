@@ -59,7 +59,7 @@ def signup():
         # next가 비어 있거나, "/"로 시작하지 않는 경우 -> 상대경로 접근X.
         if next_ is None or not next_.startswith("/"):
             # next의 값을 엔드포인트 crud.users로 지정
-            next_ = url_for("crud.users")
+            next_ = url_for("detector.index")
         # redirect
         return redirect(next_)
     return render_template("auth/signup.html", form=form)
