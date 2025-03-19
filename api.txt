@@ -2,3 +2,7 @@ https://flask.palletsprojects.com/en/stable/api/
 
  플라스크 공식문서
 
+https://werkzeug.palletsprojects.com/en/stable/datastructures/
+
+werkzeug 공식문서
+

@@ -7,12 +7,12 @@
     <section>
   <form
    method="post"  
-   action="{{ url_for('auth.signup', next=request.args.get('next')) }}"
+   action="{{ url_for('auth.signup', next = request.args.get('next')) }}"
    class="form-signin"
   >
     {{ form.csrf_token }}
     {% for message in get_flashed_messages() %}
-    <div class="dt-auth-flash">{{message}}</div>
+    <div class="dt-auth-flash">{{ message }}</div>
     {% endfor %}
     {{ form.username(size=30, class="form-control dt-auth-input", placeholder="사용자명") }}
     {{ form.email(class="form-control dt-auth-input", placeholder="메일 주소") }}

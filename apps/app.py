@@ -1,6 +1,6 @@
 # from pathlib import Path  # 경로작업
 
-from flask import Flask
+from flask import Flask, render_template
 
 # flask-login LoginManager를 import
 from flask_login import LoginManager  # type: ignore
@@ -62,7 +62,7 @@ def create_app(config_key):
 
     # crud 패키지로부터 views를 import한다.
     # views.py 모듈은 @app.route()와 같은 맵핑 기능을 가진 모듈
-    from apps.crud import views as crud_views  # as 이후 별칭 선언
+    from apps.crud import views as crud_views 
 
     # app.register_blueprint를 사용해 views의 crud를 앱에 등록한다.
     # 엔드포인트 앞에 crud가 붙게 됨.
@@ -79,5 +79,16 @@ def create_app(config_key):
     
     # register_blueprint를 사용해 views의 dt를 앱에 등록한다
     app.register_blueprint(dt_views.dt)
+    
+    app.register_error_handler(404, page_not_found)
+    app.register_error_handler(500, internal_server_error)
 
     return app
+
+def page_not_found(e):
+    """404 Not Found"""
+    return render_template("404.html"), 404
+
+def internal_server_error(e):
+    """500 Internal Server Error"""
+    return render_template("500.html"), 500

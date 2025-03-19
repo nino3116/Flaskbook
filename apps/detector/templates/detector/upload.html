@@ -12,15 +12,15 @@
         {{ form.csrf_token }}
         <div>
             <label>
-                <span> {{ form.image(class="form-control-file") }} </span>
+                <span> {{ form.image (class="form-control-file") }} </span>
             </label>
         </div>
         {% for error in form.image.errors %}
         <span style="color: red;">{{ error }}</span>
         {% endfor %}
-        <hr>
+        <hr />
         <div>
-            <label> {{ form.submit(class="btn btn-primary") }} </label>
+            <label> {{ form.submit (class="btn btn-primary") }} </label>
         </div>
     </form>
 </div>
